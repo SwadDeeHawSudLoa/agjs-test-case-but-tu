@@ -99,9 +99,20 @@ describe("Login Form", function () {
     
     //4.h
     //4.i
-    //5.a
+    //5.a 
+    await browser.wait(EC.visibilityOf(element(by.id("i_create_line_item"))), 10000);
+    await element(by.id('i_create_line_item')).click();
+    
+  
+     
     //5.b
+    await browser.wait(EC.visibilityOf(element(by.name("productcode"))), 10000);
+    await element(by.name("productcode")).sendKeys("1000070");
+    await browser.wait(EC.visibilityOf(element(by.xpath('/html/body/div[20]/div/div[2]/ul/li[1]/span'))), 10000);
+    await element(by.xpath('/html/body/div[20]/div/div[2]/ul/li[1]/span')).click();
     //5.c
+    await browser.wait(EC.visibilityOf(element(by.xpath('//*[@id="i_lineitem_grid"]/table/tbody/tr/td[4]/span/span/input[1]'))), 10000);
+    await element(by.xpath('//*[@id="i_lineitem_grid"]/table/tbody/tr/td[4]/span/span/input[1]')).sendKeys("1")
     //6
     /*var createLineItemButton = element(by.id("i_create_line_item"));
     await browser.wait(EC.elementToBeClickable(createLineItemButton), 10000);
