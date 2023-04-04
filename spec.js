@@ -10,30 +10,34 @@ describe("Login Form", function () {
     var usernameField = element(by.id("i_username"));
     var passwordField = element(by.id("i_password"));
     var loginButton = element(by.tagName("button"));
+    await browser.wait(EC.visibilityOf(usernameField), 10000);
+    await browser.wait(EC.visibilityOf(passwordField), 10000);
     await browser.wait(EC.visibilityOf(loginButton), 10000);
     await usernameField.sendKeys("consult");
     await passwordField.sendKeys("consult");
-    await browser.sleep(1000);
     await loginButton.click();
-    await browser.sleep(1000);
     //1.1 click Outbound
     var sidebarMenu = element(by.id("sidebar-menu"));
     await browser.wait(EC.visibilityOf(sidebarMenu), 10000);
     await sidebarMenu.click();
-    await browser.sleep(1000);
     //1.2 click salesOrder
     var salesOrderLink = element
       .all(by.cssContainingText("a", "Sales Orders"))
       .first();
     await browser.wait(EC.elementToBeClickable(salesOrderLink), 10000);
     await salesOrderLink.click();
-    await browser.sleep(1000);
     //2.Create SO and 3.
     var createItemButton = element(by.id("i_create_item"));
     await browser.wait(EC.elementToBeClickable(createItemButton), 10000);
     await createItemButton.click();
     //4.a
-
+    var select = element(by.xpath('//*[@id="tabstrip-2"]/form/div[3]/div[1]/div/span[1]/span[1]'))
+    await browser.wait(EC.visibilityOf(select), 10000);
+    await select.click();
+    var options = element(by.xpath('//*[@id="i_client_listbox"]/li[2]'))
+    await browser.wait(EC.visibilityOf(options), 10000);
+    await options.click();
+    await browser.sleep(10000);
     //4.b
     //4.c
     //4.d
@@ -67,3 +71,4 @@ describe("Login Form", function () {
     await lastListItem.click();
   });
 });
+
