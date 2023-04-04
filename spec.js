@@ -90,8 +90,13 @@ describe("Login Form", function () {
     ).click();
     //4.d
     //4.e
+    await browser.wait(EC.visibilityOf(element(by.id("i_request_date_insert"))), 10000);
+    await element(by.id("i_request_date_insert")).sendKeys("04/04/2023");
     //4.f
+    await browser.wait(EC.visibilityOf(element(by.id("i_document_date"))), 10000);
+    await element(by.id("i_document_date")).sendKeys("01/04/2023");
     //4.g
+    
     //4.h
     //4.i
     //5.a
